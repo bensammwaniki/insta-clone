@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="login-block log">
+    <h1>Log into your account</h1>
+
+    <form action="#">
+
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-user ti-user"></i></span>
+          <input type="text" class="form-control" placeholder="Your name">
+        </div>
+      </div>
+      
+      <hr class="hr-xs">
+
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-envelope ti-email"></i></span>
+          <input type="text" class="form-control" placeholder="Your email address">
+        </div>
+      </div>
+      
+      <hr class="hr-xs">
+
+      <div class="form-group">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-lock ti-unlock"></i></span>
+          <input type="password" class="form-control" placeholder="Choose a password">
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+
+    </form>
+  </div>
+
+  <div class="login-links">
+    <p class="text-center">Already have an account? <a class="txt-brand" href="">Login</a></p>
+  </div>
+
+{% endblock %}
