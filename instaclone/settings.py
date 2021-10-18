@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,6 +78,12 @@ WSGI_APPLICATION = 'instaclone.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+cloudinary.config(
+    cloud_name='dei7juemq',
+    api_key='794715321484646',
+    api_secret='RBh-2d_GpMGBx51wxCcmoy206o8',
+)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
