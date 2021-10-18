@@ -6,12 +6,12 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-@login_required(login_url='/signup/login/')
+@login_required(login_url='/accounts/login/')
 def home(request):
     images = Image.objects.all().order_by('-image_date')
     return render(request, 'index.html', {'images': images})
 
-@login_required(login_url='/signup/login/')
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     # get images for the current logged in user
