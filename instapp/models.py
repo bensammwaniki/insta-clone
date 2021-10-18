@@ -2,6 +2,16 @@ from django.db import models
 from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 # Create your models here.
+
+# models
+# Image
+# Profile
+# like
+# comment
+
+
+
+# image model 
 class Image(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='images')
 
@@ -24,19 +34,17 @@ class Image(models.Model):
     def delete_image(self):
         self.delete()
 
-    # update image caption
+    # update image text
     def update_caption(self, new_caption):
         self.image_caption = new_caption
         self.save()
 
-    #  get a single image using id
+    #  get by id
     @classmethod
     def get_one_image(cls, id):
         image = cls.objects.get(id=id)
         return image
 
-
-    # search images by name
     @classmethod
     def searchImageName(cls, search_term):
         images = cls.objects.filter(
@@ -53,7 +61,7 @@ class Profile(models.Model):
     profile_photo = CloudinaryField('image')
 
     bio = models.TextField(max_length=500, blank=True, null=True)
-    
+
     contact = models.CharField(max_length=50, blank=True, null=True)
 
     def update(self):
@@ -72,3 +80,24 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class Likes(models.Model):
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    likes = models.IntegerField(default=0)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.likes
+
+
+class Comments(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    comment = models.CharField(max_length=100)
+    comment_date = models.DateTimeField(auto_now_add=True)
+    def save_comment(self):
+        self.save()
+
+    def __str__(self):
+        return self.comment
