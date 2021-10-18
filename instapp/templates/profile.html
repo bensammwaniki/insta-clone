@@ -5,9 +5,27 @@
         <div class="card profilecard">
             <div class="image">
             </div>
+            {% if profile.profile_photo %}
+            <img src="{{profile.profile_photo.url}}" alt="" class="card-img-top profp">
+            {%else%}
             <img src="{% static 'img/prof.jpg' %}" class="card-img-top profp" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            {% endif %}
+            <div class="card-body text-center">
+                <div>
+                    <h4 class="card-text">
+                        {{ user.last_name }} {{ user.first_name }}
+                    </h4>
+                </div>
+
+                <div>
+                <p class="card-text">
+                    {% if profile.bio %}
+                    {{ profile.bio }}
+                    {% else %}
+                    <span class="text-danger">  Some quick example text to build on the card title and make up the bulk of the card's content.</span>
+                    {% endif %}
+                </p>
+                </div> 
             </div>
           </div>
 	</div>
@@ -64,4 +82,23 @@
       </div>
     </div>
   </div>
+
+  <div class="row">
+    {% for image in images %}
+    <div class="card" style="width: 18rem;height: 500px;">
+        <img src="{{ image.image.url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+        </div>
+    </div>
+    {% empty %}
+    <div class="card" style="width: 18rem;height: 300px;">
+        <img src="{{profile.profile_photo.url}}" alt="" class="card-img-top">
+        <div class="card-body">
+        </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+
 {% endblock %}
