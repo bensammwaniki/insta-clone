@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <div class="card" style="width: 25rem;height: 300px;margin: 10px;padding: 5px;">
+          <img src="{{ image.image.url }}" class="card-img-top" alt="..." style="object-fit: cover;height: 260px;">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ image.image_name }}</h5>
+        <p class="card-text">
+            {{image.image_caption }}
+        </p>
+        <h1>Comments</h1>
+        {% if comments %}
+        {% for comment in comments %}
+        <h4>{{ comment.user.username }}</h4>
+        <p>
+            {{comment.comment }}
+        </p>
+        <h6>comented on  {{ comment.comment_date }}</h6>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

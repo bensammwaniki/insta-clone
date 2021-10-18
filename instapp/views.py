@@ -111,3 +111,16 @@ def save_comment(request):
         return redirect('/')
     else:
         return redirect('/')   
+        
+@login_required(login_url='/accounts/login/')
+def show_image(request, id):
+    image = Post.objects.get(id=id)
+    related_images = Post.objects.filter(
+                    user_id=image.user_id).order_by('-image_date')
+    title = image.image_name
+    if Post.objects.filter(id=id).exists():
+        # get all the comments for the image
+        comments = Comments.objects.filter(image_id=id)
+        return render(request, 'display.html', {'image': image, 'comments': comments, 'images': related_images, 'title': title})
+    else:
+        return redirect('/')
