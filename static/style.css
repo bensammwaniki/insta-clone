@@ -14,10 +14,6 @@
     margin: auto;
     margin-top: 200px;
 }
-.card-body{
-    display: flex;
-    justify-content: space-between;
-}
 .prof{
     width: 600px;
     margin: auto;
@@ -37,4 +33,9 @@
     margin-top: -100px;
     border:5px solid white;
     border-radius: 100%;
+}
+.bod{
+    display: flex;
+    flex-direction: column;
+    color: turquoise;
 }
