@@ -6,7 +6,7 @@ from .models import *
 def home(request):
     return render(request,"index.html")
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='/signup/login/')
 def profile(request):
     # current_user = request.user
     # # get images for the current logged in user
