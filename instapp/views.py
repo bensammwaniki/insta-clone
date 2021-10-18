@@ -94,3 +94,19 @@ def like_image(request, id):
         image.like_count = image.like_count + 1
         image.save()
         return redirect('/')
+
+
+@login_required(login_url='/accounts/login/')
+def comment(request):
+    if request.method == 'POST':
+        comment = request.POST['comment']
+        image_id = request.POST['image_id']
+        image = Post.objects.get(id=image_id)
+        user = request.user
+        comment = Comments(comment=comment, image_id=image_id, user_id=user.id)
+        comment.save_comment()
+        image.comment_count = image.comment_count + 1
+        image.save()
+        return redirect('/' + str(image_id))
+    else:
+        return redirect('/')        
