@@ -18,9 +18,11 @@
     <div class="row">
         <div class="card display" style="width: 45rem;margin: auto; height: fit-content;padding: 10px; margin-top: 10px;">
             <div class="user" style="position: absolute;left: 30px;top: 20px; color: rgb(255, 255, 255);">
-                <img src="" alt="" class="card-img-top profp" style="width: 70px;height: 70px;margin-top: 0px;">
+                <img src="{{profile.profile_photo.url}}" alt="" class="card-img-top profp" style="width: 70px;height: 70px;margin-top: 0px;">
                 <h3>{{ image.user.username }} </h3>
             </div>
+
+
             <img src="{{ image.image.url }}" class="card-img-top" alt="..." style="object-fit: cover;height: 440px;">
             <div class="card-body" style="display:flex;flex-direction:column;">
                 <div class="buttonss" style="display: flex;justify-content: space-evenly;">
@@ -34,6 +36,7 @@
                     <h6 class="">{{ image.image_caption|slice:":20" }}<small><span class="text-muted">...learnMore</span></small> </h6>
                 </div>     
             </div>
+            
         </div>
     </div>
     {% endfor %}
