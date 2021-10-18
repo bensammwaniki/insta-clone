@@ -8,6 +8,7 @@ import cloudinary.api
 @login_required(login_url='/accounts/login/')
 def home(request):
     images = Post.objects.all().order_by('-image_date')
+
     return render(request, 'index.html', {'images': images})
 
 @login_required(login_url='/accounts/login/')
@@ -97,7 +98,7 @@ def like_image(request, id):
 
 
 @login_required(login_url='/accounts/login/')
-def comment(request):
+def save_comment(request):
     if request.method == 'POST':
         comment = request.POST['comment']
         image_id = request.POST['image_id']
@@ -107,6 +108,6 @@ def comment(request):
         comment.save_comment()
         image.comment_count = image.comment_count + 1
         image.save()
-        return redirect('/' + str(image_id))
+        return redirect('/')
     else:
-        return redirect('/')        
+        return redirect('/')   

@@ -2,7 +2,8 @@
 {% load static %}
 {% block content %}
 
-<div class="container-fluid">
+
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="card" style="width: 45rem;margin: auto; height: fit-content;padding: 10px; margin-top: 10px;">
             <img src="{% static 'img/log.jpg' %}" class="card-img-top" alt="..." style="object-fit: cover;height: 440px;">
@@ -12,13 +13,13 @@
                 <button type="button" class="btn btn-dark"><i class="bi bi-share"></i></button>       
             </div>
         </div>
-    </div>
+</div> -->
 
     {% for image in images %}
     <div class="row">
         <div class="card display" style="width: 45rem;margin: auto; height: fit-content;padding: 10px; margin-top: 10px;">
             <div class="user" style="position: absolute;left: 30px;top: 20px; color: rgb(255, 255, 255);">
-                <img src="{{profile.profile_photo.url}}" alt="" class="card-img-top profp" style="width: 70px;height: 70px;margin-top: 0px;">
+                <img src="{{image.user.profile.profile_photo.url}}" alt="" class="card-img-top profp" style="width: 70px;height: 70px;margin-top: 0px;">
                 <h3>{{ image.user.username }} </h3>
             </div>
 
@@ -27,7 +28,7 @@
             <div class="card-body" style="display:flex;flex-direction:column;">
                 <div class="buttonss" style="display: flex;justify-content: space-evenly;">
                     <a type="button" href="{% url 'like.image' image.id %}" class="btn btn-primary"><i class="bi bi-heart-fill"></i>  {{image.like_count }} Likes</a>
-                    <a type="button" class="btn btn-warning"><i class="bi bi-chat-fill"></i> {{image.comment_count }}Comments</a>
+                    <a type="button" class="btn btn-warning" id="comm"><i class="bi bi-chat-fill"></i> {{image.comment_count }}Comments</a>
                     <a type="button" class="btn btn-dark"><i class="bi bi-share"></i>  0 shares</a>  
     
                 </div>
@@ -36,11 +37,37 @@
                     <h6 class="">{{ image.image_caption|slice:":20" }}<small><span class="text-muted">...learnMore</span></small> </h6>
                 </div>     
             </div>
-            
+            <div id="comment" style="display: none;">
+                <form action="{% url 'comment.add' %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Comment</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            name="comment" required></textarea>
+                        <input type="hidden" name="image_id" value="{{ image.id }}">
+                    </div>
+                    <button type="submit" class="btn mt-4 floar-right">Add Comment</button>
+                </form>
+            </div>
+        {% if comments %}
+           {% for comment in comments %}
+           <p class="m-2">
+            {{comment.comment }}
+           </p>
+           {% endfor %}
+           {% else %}
+           {% endif %}
+
+
         </div>
     </div>
     {% endfor %}
     
 </div>
-  
+
+<script>
+    $( "#comm" ).click(function() {
+      $( "#comment" ).toggle();
+    });
+ </script>
 {% endblock %}
