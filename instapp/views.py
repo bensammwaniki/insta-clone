@@ -111,7 +111,7 @@ def save_comment(request):
         return redirect('/')
     else:
         return redirect('/')   
-        
+
 @login_required(login_url='/accounts/login/')
 def show_image(request, id):
     image = Post.objects.get(id=id)
@@ -124,3 +124,15 @@ def show_image(request, id):
         return render(request, 'display.html', {'image': image, 'comments': comments, 'images': related_images, 'title': title})
     else:
         return redirect('/')
+@login_required(login_url='/accounts/login/')
+def search(request):
+    if 'search' in request.GET and request.GET['search']:
+        search_term = request.GET.get('search').lower()
+        images = Post.search_by_image_name(search_term)
+        message = f'{search_term}'
+        title = message
+
+        return render(request, 'search.html', {'success': message, 'images': images})
+    else:
+        message = 'You havent searched for any term'
+        return render(request, 'search.html', {'danger': message})
