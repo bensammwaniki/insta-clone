@@ -56,7 +56,7 @@ def update_profile(request):
 
         return redirect('/profile', {'success': 'Updated your profile Successfully'})
     else:
-        return render(request, 'profile.html', {'danger': 'Profile Update Failed'})    
+        return render(request, 'profile.html', {'danger': 'Update Failed'})    
 
 def login(request):
     return render(request,"login.html")
