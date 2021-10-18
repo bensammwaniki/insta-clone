@@ -25,6 +25,8 @@
                     <span class="text-danger">  Some quick example text to build on the card title and make up the bulk of the card's content.</span>
                     {% endif %}
                 </p>
+                <a type="button" class="btn btn-warning" aria-current="page" data-bs-toggle="modal" data-bs-target="#exampleModal">update profile</a>
+
                 </div> 
             </div>
           </div>
@@ -35,7 +37,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">update profile </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -82,16 +84,16 @@
       </div>
     </div>
   </div>
-
+<div class="container">
   <div class="row">
     {% for image in images %}
-    <div class="card" style="width: 18rem;height: 500px;">
+    <div class="card" style="width: 18rem;height: 300px;margin: 10px;">
         <img src="{{ image.image.url }}" class="card-img-top" alt="...">
         <div class="card-body">
         </div>
     </div>
     {% empty %}
-    <div class="card" style="width: 18rem;height: 300px;">
+    <div class="card" style="width: 18rem;height: 300px; margin: 10px;">
         <img src="{{profile.profile_photo.url}}" alt="" class="card-img-top">
         <div class="card-body">
         </div>
@@ -99,6 +101,6 @@
     {% endfor %}
 
   </div>
-
+</div>
 
 {% endblock %}
