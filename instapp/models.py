@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 # models
-# Image
+# posts
 # Profile
 # like
 # comment
@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 
 
 # image model 
-class Image(models.Model):
+class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='images')
 
     image = CloudinaryField('image')
@@ -83,7 +83,7 @@ class Profile(models.Model):
 
 
 class Likes(models.Model):
-    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    image = models.ForeignKey(Post, on_delete=models.CASCADE)
     likes = models.IntegerField(default=0)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -93,7 +93,7 @@ class Likes(models.Model):
 
 class Comments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    image = models.ForeignKey(Post, on_delete=models.CASCADE)
     comment = models.CharField(max_length=100)
     comment_date = models.DateTimeField(auto_now_add=True)
     def save_comment(self):
