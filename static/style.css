@@ -1,3 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Niconne&family=Yatra+One&display=swap');
+
+
+body{
+    font-family: 'Yatra One', cursive;
+}
+
+h1,nav{
+    font-family: 'Niconne', cursive;
+        font-size: 2em;
+
+}
+
+
 .login-block{
     width: 600px;
     margin: auto;
