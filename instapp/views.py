@@ -2,9 +2,14 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
 
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
+@login_required(login_url='/signup/login/')
 def home(request):
-    return render(request,"index.html")
+    images = Image.objects.all().order_by('-image_date')
+    return render(request, 'index.html', {'images': images})
 
 @login_required(login_url='/signup/login/')
 def profile(request):
