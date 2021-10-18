@@ -1,8 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&family=Yatra+One&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Metal&display=swap');
 body{
-    font-family: 'Yatra One', cursive;
+    font-family: 'Metal', cursive;
 }
 
 h1,nav{
