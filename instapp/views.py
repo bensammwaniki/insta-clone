@@ -125,14 +125,13 @@ def show_image(request, id):
     else:
         return redirect('/')
 @login_required(login_url='/accounts/login/')
-def search(request):
+def search_post(request):
     if 'search' in request.GET and request.GET['search']:
         search_term = request.GET.get('search').lower()
-        images = Post.search_by_image_name(search_term)
+        images = Post.search_image_name(search_term)
         message = f'{search_term}'
-        title = message
 
-        return render(request, 'search.html', {'success': message, 'images': images})
+        return render(request, 'search.html', {'found': message, 'images': images})
     else:
-        message = 'You havent searched for any term'
+        message = 'Not found'
         return render(request, 'search.html', {'danger': message})

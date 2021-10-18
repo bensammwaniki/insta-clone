@@ -46,10 +46,14 @@ class Post(models.Model):
         return image
 
     @classmethod
-    def searchImageName(cls, search_term):
+  # search images using image name
+    def search_image_name(cls, search_term):
         images = cls.objects.filter(
-            image_name__icontains=search_term)
-        return images        
+        image_name__icontains=search_term)
+        return images    
+
+    def __str__(self):
+        return self.user.username       
 
     def __str__(self):
         return self.image_name
@@ -78,8 +82,6 @@ class Profile(models.Model):
         profile = cls.objects.filter(user=user)
         return profile
 
-    def __str__(self):
-        return self.user.username
 
 
 class Likes(models.Model):
@@ -94,7 +96,7 @@ class Likes(models.Model):
 class Comments(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ForeignKey(Post, on_delete=models.CASCADE)
-    comment = models.CharField(max_length=100)
+    comment = models.CharField(max_length=500)
     comment_date = models.DateTimeField(auto_now_add=True)
     def save_comment(self):
         self.save()
