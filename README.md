@@ -4,7 +4,7 @@
 
 ## Description
 
-Galleria is a gallery web application to showcase pictures and designs. Usersview photos updated by the site admin. Users can see photos based on the category. The search function will search photos based on the categories and filter them.
+Newinsta is an Instagram web application to showcase pictures and designs. users can create accounts and can be allowed to comment on other users' images. Users are also allowed to search images by name. This application allows users to like pictures.
 
 ## Setup Requirements
 
@@ -30,10 +30,6 @@ python3.8 -m venv --without-pip virtual
 
 ```
 source virtual/bin/activate
-```
-
-```
-curl https://bootstrap.pypa.io/get-pip.py | python
 ```
 
 ```
@@ -71,16 +67,21 @@ The following languages have been used on this project:
 
 ## Setup/Installation Requirements
 
-- Live link to view the project <a target="_blank" href="https://galleriaben.herokuapp.com/">View Galleria</a>
+- Live link to view the project <a target="_blank" href="https://galleriaben.herokuapp.com/">Newinsta</a>
 
 ## Screenshot
 
-  <img src="./img/1.png" />
+  <img src="./static/img/1.png" width="80%">
+    <img src="./static/img/2.png" width="80%">
+  <img src="./static/img/3.png" width="80%">
+  <img src="./static/img/4.png" width="80%">
+
 
     
 ## Known Bugs
 
 no known bugs
+the share might not work still work in progress
 
 ## Support and contact details 🙂
 
@@ -88,7 +89,7 @@ no known bugs
 
 ## License
 
-Copyright (c) 2021 Moringa school
+Copyright (c) 2021 bensam mwaniki
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files , to deal
