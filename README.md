@@ -67,7 +67,7 @@ The following languages have been used on this project:
 
 ## Setup/Installation Requirements
 
-- Live link to view the project <a target="_blank" href="https://galleriaben.herokuapp.com/">Newinsta</a>
+- Live link to view the project <a target="_blank" href="https://beninstapp.herokuapp.com/">Newinsta</a>
 
 ## Screenshot
 
